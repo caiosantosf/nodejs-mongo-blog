@@ -1,0 +1,224 @@
+.adolfo-page:hover > .adolfo-title {
+    color: #e2202a !important;
+}
+
+.logo-big {
+    max-width: 150px;
+}
+.logo-small {
+    max-width: 100px !important;
+}
+@media (max-width: 360px) {
+    .logo-big{
+        width: 100px;
+    }
+    .logo-small{
+        width: 100px;
+    }
+}
+body { 
+    padding-top: 40px; 
+}
+@media (min-width: 361px) {
+    body { 
+        padding-top: 70px; 
+    } 
+}
+#logo {
+ -webkit-transition: all 0.4s ease;
+ transition: all 0.4s ease;
+}
+.navbar {
+    box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23)
+}
+.nav-link:hover, i:hover, .link-channel:hover, .article-link:hover, .agenda-event a:hover{
+    color: #e2202a !important;
+}
+a:hover .article-link {
+    color: #e2202a !important;
+}
+.fa-chevron-up:hover{
+    color: #e2202a!important;
+}
+.ps-prev, .ps-next {
+    border: none !important;
+    background: transparent !important;
+}
+.ps-caption {
+    background: rgba(0, 0, 0, 0.507) !important;
+    font-size: 1.5em;
+}
+.center-cropped {
+    object-fit: cover;
+    object-position: center;
+    height: 236px;
+ }
+ .subtitle-news {
+     height: 185px;
+     overflow: hidden;
+ }
+.btn-more {
+    color: #37295b !important;
+    border-color: #dedfe0 !important;
+    margin-top: 1em;
+}
+.btn-more:hover {
+    background-color: #eef0f3 !important;
+    border-color: #dedfe0;
+    color: #e2202a !important;
+    cursor: pointer;
+}
+.carousel {
+    max-width: 700px;
+    margin: auto;
+}
+.m-news {
+    margin: .4em .5em 0 .5em;
+}
+.agenda .agenda-date {padding: .5em 0 0 .5em}
+.agenda .agenda-time {padding-left: 53px;}
+.agenda .agenda-date .dayofmonth {
+  width: 43px;
+  font-size: 43px;
+  line-height: 63px;
+  float: left;
+  text-align: right;
+  margin-right: 10px;
+}
+.agenda .agenda-date .dayofweek {
+  font-size: 0.75em; 
+}
+.agenda-event {
+    font-size: 1.2em;
+}
+.event-fb {
+    color: #4267b2;
+    font-size: .8em;
+}
+.event-name:hover > .event-fb {
+    color: #e2202a !important;
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+    }
+}
+
+.bg-orange {
+    background-color: #F2B01C;
+}
+.bg-yellow {
+    background-color: #F8DE04;
+}
+.bg-purple-light {
+    background-color: #8377a1;
+}
+.text-yellow {
+    color: #F8DE04 !important;
+}
+.text-orange {
+    color: #fdc52e !important;
+}
+.bg-purple {
+    background-color: #341D48;
+}
+.text-purple {
+    color: #37295b !important;
+}
+.bg-black {
+    background-color: black;
+}
+.bg-red {
+    background-color:  #e2202a !important;
+}
+.text-red {
+    color: #e2202a !important;
+}
+.jumbotron {
+    margin: 0;
+}
+a:link, a:hover, a:visited, a:active, a:focus { 
+    text-decoration:none;
+    color: rgb(0, 0, 0);
+    outline: none;
+}
+.font-menu {
+    font-family: 'Open Sans', sans-serif;
+}
+.menu-size {
+    font-size: 16px;
+}
+.news-size {
+    font-size: 1em;
+    font-weight: 600;
+}
+.card-text {
+    font-size: .9em;
+}
+.card-news {
+    border: none !important;
+}
+.article-size {
+    font-size: 1em;
+}
+.mt-25{
+    margin-top: 6px;
+}
+.card-img-left {
+    border-bottom-left-radius: calc(.25rem - 1px);
+    border-top-left-radius: calc(.25rem - 1px);
+    float: left;
+    padding-right: 1em;
+    margin-bottom: -1.25em;
+}
+.modal-open {
+    overflow-y: auto;
+    padding-right: 0px !important;
+}
+.videos {
+    width: 350px;
+    height: 182px;
+}
+@media (max-width: 500px) {
+    .videos {
+        width: 100%;
+    }
+}
+@media (min-width: 1200px) {
+    .p-10 {
+        padding: 0em 8em 0em 8em;
+    }
+}

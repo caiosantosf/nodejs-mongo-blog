@@ -1,0 +1,46 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-yellow pr-2 pl-2 pt-0 pb-0">
+    <div class="container p-10">
+      <a class="navbar-brand logo" href="/">
+        <img id="logo" class="logo-big" src="../assets/logosite.png">
+      </a>
+
+      <button class="navbar-toggler m-1" type="button" data-toggle="collapse" data-target="#navbarSite">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSite">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3 mt-1">
+              <a href="/" class="nav-link text-purple font-menu menu-size font-weight-bold">Início</a>
+            </li>
+            <li class="nav-item mr-3 mt-1">
+              <a href="/blog" class="nav-link text-purple font-menu menu-size font-weight-bold">Blog</a>
+            </li>
+            <li class="nav-item mr-3 mt-1">
+              <a data-target="#joinModal" data-toggle="modal" href="#joinModal" class="nav-link text-purple font-menu menu-size font-weight-bold">Seja Membro</a>
+            </li>
+            <li class="nav-item mr-3 mt-1">
+              <a data-target="#contactModal" data-toggle="modal" href="#contactModal" class="nav-link text-purple font-menu menu-size font-weight-bold">Contato</a>
+            </li>
+            <li class="nav-item mr-4 mt-25">
+              <a target="_blank" href="https://www.facebook.com/teste/">
+                <i class="fa fa-facebook fa-2x text-purple" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="nav-item mr-4 mt-25">
+              <a target="_blank" href="/sendWhatsapp/null">
+                <i class="fa fa-whatsapp fa-2x text-purple" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="nav-item mr-4 mt-25 d-none">
+              <a target="_blank" href="https://www.youtube.com/teste/">
+                <i class="fa fa-youtube fa-2x text-purple" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</nav>
+
+<% include contact %>
+<% include join %> 

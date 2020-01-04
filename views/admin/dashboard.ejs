@@ -1,0 +1,45 @@
+<html lang="pt-BR">
+    <head>
+        <title>Dashboard</title>
+        <% include ../partials/head %>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="mt-1">Upload de Imagens</h3>
+                    <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="post">
+                        <input type="file" name="upload" multiple="multiple">
+                        <br>
+                        <input type="submit" class="btn btn-warning mt-2" value="Carregar" name="submit">
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <h1>Blog</h1>
+                    <% blogs.forEach(function(post) { %>
+                        <a href="/editarpost/blog/<%=post._id%>"><%= post.title %></a>
+                        <a href="/removerpost/<%=post._id%>" style="color:red">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                        <br>
+                    <% }); %>
+                    <a class="btn btn-warning" href="/novopost/blog">Novo</a>
+                </div>
+                <div class="col-md-4">
+                    <h1>Agenda</h1>
+                    <% events.forEach(function(event) { %>
+                        <a href="/editarevento/<%=event._id%>"><%= event.title %></a>
+                        <a href="/removerevento/<%=event._id%>" style="color:red">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                        <br>
+                    <% }); %>
+                    <a class="btn btn-warning" href="/novoevento">Nova</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,22 @@
+#content img {
+    max-width: 100% !important;
+}
+
+#content p {
+    text-align: justify;
+    text-justify: inter-word; 
+}
+
+#dateandtime {
+    font-size: .9em;
+}
+
+.center-cropped-post {
+    object-fit: cover;
+    object-position: center;
+    height: 180px;
+ }
+ .subtitle-post {
+     height: 80px;
+     overflow: hidden;
+ }

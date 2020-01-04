@@ -1,0 +1,46 @@
+<div class="modal" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="joinModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-yellow text-purple">
+          <h5 class="modal-title" id="joinModalLabel">Filie-se</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success" id="msg-success-join">
+                <strong>Sucesso!</strong> Seu email foi enviado e em breve será respondido!
+            </div>
+            <div class="alert alert-danger" id="msg-error-join">
+                <strong>Erro!</strong> Houve algum erro com o envio do seu email, nos avise pelo <a href="http://facebook.com/teste">Facebook</a>
+            </div>
+            <form id="joinform" name="joinform">
+                <div class="form-group">
+                    <label for="join-name">Seu nome</label>
+                    <input type="text" class="form-control" id="joinname" name="joinname" required>
+                </div>
+                <div class="form-group">
+                    <label for="join-email">Seu e-mail</label>
+                    <input type="email" class="form-control" id="joinemail" name="joinemail" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Data de Nascimento</label>
+                    <input type="date" class="form-control" id="birthday" name="birthday" required>
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" maxlength="14" class="form-control" id="cpf" name="cpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone de contato (com DDD)</label>
+                    <input type="text" class="form-control" id="phone" name="phone" required>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" form="joinform" class="btn btn-danger">Enviar</button>
+        </div>
+      </div>
+    </div>
+</div>

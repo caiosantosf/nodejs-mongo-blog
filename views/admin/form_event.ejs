@@ -1,0 +1,62 @@
+<!-- Doctype HTML5 -->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Evento</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../assets/bootstrap.min.css">
+    <title>Edição de Eventos</title>
+  </head>
+
+  <body class="bg-light">
+    <div class="container mt-2 ">
+        <a href="/dashboard">Voltar</a>
+        <h5>Evento</h1>
+        <div class="text-center">
+            <%var route = ''; if (!edit) route = '/salvarevento'; else route = '/atualizarevento/' + event._id; %>
+            <form class="form-group" method="POST" action="<%= route %>">
+                <input class="form-control mb-2" type="text" name="title" id="title" placeholder="Descrição do Evento" value="<%= event.title %>" required>
+                <input class="form-control mb-2" type="text" name="link" id="link" value="<%= event.link %>" placeholder="Link no Facebook" required>
+                <input class="form-control mb-2" type="text" name="place" id="place" value="<%= event.place %>" placeholder="Lugar" required>
+                <input class="form-control mb-2" type="text" name="date-text" id="date-text" placeholder="Data e Hora" required>
+                <input type="hidden" name="date" id="date"  value="<%= event.date %>">
+                <input class="form-control mt-2 btn btn-warning" type="submit" value="Salvar">
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/bootstrap.min.js"></script>
+    <script src="../assets/jquery.mask.min.js"></script>
+    <script>
+        $('#date-text').mask('00/00/0000 00:00:00');
+
+        var data = new Date(document.getElementById("date").value);
+        data = new Date(data);
+
+        var mes = data.getMonth() + 1
+        document.getElementById('date-text').value = ('0' + data.getDate()).slice(-2) + '/' + ('0' + mes).slice(-2) + '/' + data.getFullYear() +  ' ' + ('0' + data.getHours()).slice(-2) + ':' + ('0' + data.getMinutes()).slice(-2);
+
+        var form = document.querySelector('form');
+        form.onsubmit = function() {
+            var dateText = document.querySelector('input[name=date-text]');
+            var date = document.querySelector('input[name=date]');
+            var dt = dateText.value;
+            date.value = textToDate(dt);
+            console.log(date.value);
+        }
+
+        function textToDate(text) {
+            var y = text.substring(6, 10);
+            var m = text.substring(3, 5) - 1;
+            var d = text.substring(0, 2);;
+            var h = text.substring(11, 13);
+            var mi = text.substring(14, 16);
+            var date = new Date(y, m, d, h, mi, 0, 0);
+            return date;
+        }
+    </script>
+</body>
+</html>

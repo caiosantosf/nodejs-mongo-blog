@@ -1,0 +1,34 @@
+{
+  "name": "nodejs-mongo-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Caio Santos <caiosantosfreitas@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.2.0",
+    "bootstrap": "^4.0.0-beta.2",
+    "compression": "^1.7.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-useragent": "^1.0.8",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery-mask-plugin": "^1.14.13",
+    "mongoose": "^5.0.1",
+    "multiparty": "^4.1.3",
+    "pgwslider": "^2.3.1",
+    "pgwslideshow": "^2.0.0",
+    "popper.js": "^1.12.9",
+    "rest": "^2.0.0"
+  },
+  "engines": {
+    "node": "8.9.3"
+  }
+}

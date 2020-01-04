@@ -1,0 +1,80 @@
+<!-- Doctype HTML5 -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33763634-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-33763634-2');
+    </script>
+
+    <title>Notícias</title>
+    <meta name="description" content="Notícias">
+    <% include partials/head %>
+    <link rel="stylesheet" href="../assets/index.css">
+  </head>
+
+  <body class="bg-light">
+    <header>
+      <% include partials/header %> 
+    </header>
+
+    <main>
+      <div class="container pt-4">  
+        <div class="row">
+          <div class="container-fluid text-center"><h4 class="font-menu text-red">Todas as notícias</h4></div>
+          <% posts.forEach(function(post) { %>
+            <div class="col-md-4 p-1">
+                <a href="/noticias/<%= post.titlePath %>">
+                  <div class="card bg-light">
+                    <% if (post.cover) {%>
+                      <img class="card-img-top center-cropped" src=".<%= post.cover %>" alt="Card image cap">
+                    <% } %>
+                    <div class="card-body subtitle-news">
+                      <h5 class="card-title news-size text-purple"><%= post.title %></h5>
+                      <p class="card-text"><%= post.subtitle %></p>
+                    </div>
+                  </div>
+                </a>
+            </div> 
+          <% }) %>
+        </div>
+        <div class="container pt-2 d-none">
+          <nav aria-label="page-navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link text-red" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link text-red" href="#">1</a></li>
+              <li class="page-item"><a class="page-link text-red" href="#">2</a></li>
+              <li class="page-item"><a class="page-link text-red" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link text-red" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only"></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </main>
+    <br><br><br><br><br><br><br><br>
+    <footer>
+        <% include partials/footer %> 
+      </footer>
+  
+      <script src="../assets/jquery.min.js"></script>
+      <script src="../assets/popper.min.js"></script>
+      <script src="../assets/bootstrap.min.js"></script>
+      <script src="../assets/jquery.mask.min.js"></script>
+      <script src="../assets/modal.js"></script>
+  </body>
+</html>

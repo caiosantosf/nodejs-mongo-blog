@@ -1,0 +1,82 @@
+<!-- Doctype HTML5 -->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Post</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../assets/bootstrap.min.css">
+    <title>Edição de Posts</title>
+    <script src="../../assets/ckeditor.js"></script>
+    <script src="../../assets/post.js"></script>
+  </head>
+
+  <body class="bg-light">
+    <div class="container mt-2 ">
+        <a href="/dashboard">Voltar</a>
+        <h5><%= type.charAt(0).toUpperCase() + type.slice(1) %></h1>
+        <% var date = new Date();var mes = date.getMonth() + 1;var dia = date.getDate();date = ('0' + dia).slice(-2) + ('0' + mes).slice(-2)%>
+        <span style="font-size:.8em;">Para usar imagens, primeiro fazer o upload delas na pagina anterior, aqui colocar uma barra "/" + o dia e mes + o nome original da imagem. Exemplo: imagem 1.png fica /<%= date %>1.png</span>
+        <div class="text-center">
+            <%var route = ''; if (!edit) route = '/salvarpost'; else route = '/atualizarpost/' + post._id; %>
+            <form class="form-group" method="POST" action="<%= route %>">
+                <input class="form-control mb-2" type="text" name="title" id="title" placeholder="Título do Post" value="<%= post.title %>" required>
+                <input type="hidden" name="titlePath" id="titlePath">
+                <input class="form-control mb-2" type="text" name="subtitle" id="subtitle" value="<%= post.subtitle %>" placeholder="Subtítulo">
+                <% if (type == 'blog') { %>
+                    <input class="form-control mb-2" type="text" name="author" id="author" value="<%= post.author %>" placeholder="Autor">
+                <% } %>
+                <input class="form-control mb-2" type="text" name="cover" id="cover"  placeholder="Imagem Principal (capa)" value="<%= post.cover %>" required>
+                <select class="form-control mb-2" name="hidden" id="hidden">
+                    <% if (!edit || post.hidden == true) { %>
+                        <option value="true" selected>Rascunho</option>
+                        <option value="false">Publicar</option>
+                    <% } else { %>
+                        <option value="true">Rascunho</option>
+                        <option value="false" selected>Publicar</option>
+                    <% } %>
+                </select>
+                <textarea id="content" name="content"><%= post.content%></textarea>
+                <%var type2 = ''; if (type == 'noticia') type2 = 'news'; else type2 = type; %>
+                <input type="hidden" name="type" value="<%= type2 %>">
+                <input class="form-control mt-2 btn btn-warning" type="submit" value="Salvar">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        initCkEditor();
+
+        var form = document.querySelector('form');
+        form.onsubmit = function() {
+            var titlePath = document.querySelector('input[name=titlePath]');
+            var title = document.querySelector('input[name=title]');
+            var tp = title.value;
+            titlePath.value = tPath(tp);
+        }
+        
+        function tPath(newStringComAcento) {
+              var string = newStringComAcento.toLowerCase();
+              var mapaAcentosHex 	= {
+                  a : /[\xE0-\xE6]/g,
+                  e : /[\xE8-\xEB]/g,
+                  i : /[\xEC-\xEF]/g,
+                  o : /[\xF2-\xF6]/g,
+                  u : /[\xF9-\xFC]/g,
+                  c : /\xE7/g,
+                  n : /\xF1/g
+              };
+          
+              for (var letra in mapaAcentosHex) {
+                  var expressaoRegular = mapaAcentosHex[letra];
+                  string = string.replace(expressaoRegular, letra);
+              }
+              var string = string.replace(/[^\w\s]/g,'');
+              return string.split(' ').join('-');
+        }
+    </script>
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/bootstrap.min.js"></script>
+</body>
+</html>

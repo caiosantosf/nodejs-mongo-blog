@@ -1,0 +1,42 @@
+<div class="modal" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-yellow text-purple">
+          <h5 class="modal-title" id="contactModalLabel">Entre em Contato</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-success" id="msg-success">
+                <strong>Sucesso!</strong> Seu email foi enviado e em breve será respondido!
+            </div>
+            <div class="alert alert-danger" id="msg-error">
+                <strong>Erro!</strong> Houve algum erro com o envio do seu email, nos avise pelo <a href="http://facebook.com/teste">Facebook</a>
+            </div>
+            <form id="contact-form" name="contact-form">
+                <div class="form-group">
+                    <label for="name">Seu nome</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Seu e-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="InputSubject">Assunto</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Sua mensagem</label>
+                    <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" form="contact-form" class="btn btn-danger">Enviar Email</button>
+        </div>
+      </div>
+    </div>
+</div>

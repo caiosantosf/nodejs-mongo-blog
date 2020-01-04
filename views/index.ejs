@@ -1,0 +1,226 @@
+<!-- Doctype HTML5 -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33763634-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-33763634-2');
+    </script>
+
+    <title>NodeJS-Mongo-Blog</title>
+    <meta name="description" content="Um blog feito em NodeJS">
+    <% include partials/head %>
+    <link rel="stylesheet" href="../assets/index.css">
+    <link rel="stylesheet" href="../assets/pgwslider.min.css">
+  </head>
+
+  <body class="bg-light">
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.11';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <header>
+      <% include partials/header %>
+    </header>
+
+    <main>
+      <div class="container pt-4">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="row">
+              <div class="col-md-8">
+                  <ul class="pgwSlider">
+                    <%var i = 1; blogs.forEach(function(post) { %>
+                    <% if (i == 1 || i == 2) { %>
+                    <li>
+                      <a href="/blog/<%= post.titlePath %>">
+                        <img src=".<%= post.cover %>">
+                        <span><%= post.title %></span>
+                      </a>
+                    </li>
+                    <% } %>
+                    <% i++;}); %>
+                  </ul>
+              </div>
+              <div class="col-md-4 pl-1">
+              <%var i = 1; blogs.forEach(function(post) { %>
+                <% if (i == 3) { %>
+                  <a href="/blog/<%= post.titlePath %>">
+                    <div class="card bg-light">
+                      <img class="card-img-top center-cropped" src=".<%= post.cover %>">
+                      <div class="card-body subtitle-news">
+                        <h5 class="card-title news-size text-purple article-link"><%= post.title %></h5>
+                        <p class="card-text"><%= post.subtitle %></p>
+                      </div>
+                    </div>
+                  </a>
+                <% } %>
+                <% i++;}); %>
+              </div>
+              <div class="container m-news"> 
+                <div class="row">
+                    <%var i = 1; blogs.forEach(function(post) { %>
+                    <% if (i == 4 || i == 5 || i == 6) { %>
+                    <div class="col-md-4 p-2">
+                      <a href="/blog/<%= post.titlePath %>">
+                        <div class="card bg-light">
+                          <img class="card-img-top center-cropped" src=".<%= post.cover %>">
+                          <div class="card-body subtitle-news">
+                            <h5 class="card-title news-size text-purple article-link"><%= post.title %></h5>
+                            <p class="card-text"><%= post.subtitle %></p>
+                          </div>
+                        </div>
+                      </a>
+                    </div> 
+                    <% } %>
+                    <% i++;}); %>
+                </div> 
+              </div>
+              <div class="container-fluid">
+                <div class="text-center"><a class="mt-1 btn btn-outline-secondary btn-sm btn-block btn-more" href="/blog">Ver mais</a></div>
+              </div>
+            </div>      
+          </div>     
+        </div>
+      </div>
+    </main>
+
+   <!-- <section class="">
+      <div class="jumbotron jumbotron-fluid bg-purple pt-4 pb-4">
+        <div class="container-fluid">
+            <div class="container-fluid text-center"><h4 class="font-menu text-white mb-3">TV</h4>                   
+              <iframe class="videos" src="" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+              <iframe class="videos" src="" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+              <iframe class="videos" src="" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="text-center pt-2"><a target="_blank" href="" class="text-white link-channel">Ver todos no YouTube</a></div>
+        </div>
+      </div>
+      </section> -->
+
+      <section>
+      <div class="container-fluid pb-4">
+        <div class="row mt-1">
+          <div class="col-lg-6">
+              <div class="container-fluid p-0 text-center">
+                <div class="container-fluid text-center pb-1"><h3 class="font-menu text-red">Agenda</h3></div> 
+                <div class="agenda">
+                  <table class="table table-condensed">
+                    <thead class="bg-orange">
+                      <tr>
+                        <th>Data</th>
+                        <th>Evento</th>
+                      </tr>
+                    </thead>
+                    <tbody class="">
+                      <% events.forEach(function(event) { %>
+                      <tr>
+                        <td nowrap class="agenda-date">
+                          <div class="dayofmonth text-red"></div>
+                          <div class="dayofweek text-muted"></div>
+                          <div class="shortdate"></div>
+                          <div class="agenda-time"></div>
+                        </td>
+                        <td class="agenda-events">
+                          <div class="agenda-event">
+                            <a target="_blank" href="<%= event.link %>" class="text-purple event-name"><%= event.title %>
+                              <i class="fa fa-facebook-square event-fb" aria-hidden="true"></i>
+                            </a>  
+                          </div>
+                          <div class="">Local: <%= event.place %></div>
+                        </td>
+                      </tr>
+                      <div class="d-none" id="hiddendate"><%= event.date %></div>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
+                <span class="text-purple event-name d-none">Não há eventos programados.</span>
+              </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="container-fluid text-center pb-4">
+              <h3 class="text-center text-red mb-2 font-menu">Álbum de Fotos</h3>
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-9.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-8.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-7.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-6.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-5.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-4.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-3.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-2.jpg" >
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block img-fluid" src="../assets/gallery/crl-1.jpg" >
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Próximo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <% include partials/footer %> 
+    </footer>
+
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/bootstrap.min.js"></script>
+    <script src="../assets/pgwslider.js"></script>
+    <script src="../assets/jquery.mask.min.js"></script>
+    <script src="../assets/index.js"></script>
+    <script src="../assets/modal.js"></script>
+
+  </body>
+</html>

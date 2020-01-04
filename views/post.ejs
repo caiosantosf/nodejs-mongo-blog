@@ -1,0 +1,132 @@
+<!-- Doctype HTML5 -->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-33763634-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-33763634-2');
+    </script>
+
+    <title><%= post.title %></title>
+    <meta name="description" content="<%= post.title %>">
+    <%- include partials/head%>
+
+    <meta property="fb:app_id" content="402430990210524" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="http://org.br/blog/<%= post.titlePath %>" />
+    <meta property="og:title" content="<%= post.title %>" />
+    <meta property="og:site_name" content="Blog" />
+    <meta property="og:description" content="<%= post.subtitle %>" />
+    <meta property="og:image" content="http://org.br<%= post.cover %>" />
+
+    <link rel="stylesheet" href="../assets/index.css">
+    <link rel="stylesheet" href="../assets/post.css">
+    <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5a649862431ad7001336ea77&product=sticky-share-buttons' async='async'></script>
+  </head>
+
+  <body class="bg-light">
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.11';
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <header>
+        <% include partials/header %> 
+    </header>
+
+    <main>
+        <div class="container pt-5 pb-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="container-fluid text-left pl-0 pb-1">
+                        <h2 class="font-menu text-red text-center pb-1"><%= post.title.toUpperCase() %></h2>
+                        <% if (post.author) {%>
+                        <p class="text-purple text-center mb-1"><%= post.author %></p>   
+                        <% } %>                     
+                        <p class="text-muted mb-2 text-center" id="dateandtime"></p>
+                    </div> 
+                                     
+                    <div id="content" class=""><%- post.content %></div>
+
+                    <div class="row">
+                        <div class="container-fluid text-center"><h4 class="font-menu text-red">Leia também</h4></div> 
+                        <% readtoo.forEach(function(post) { %>
+                            <div class="col-md-4">
+                              <a href="/blog/<%= post.titlePath %>">
+                                <div class="card bg-light">
+                                  <img class="card-img-top center-cropped-post" src="../..<%= post.cover %>">
+                                  <div class="card-body subtitle-post">
+                                    <h5 class="card-title news-size text-purple article-link"><%= post.title %></h5>
+                                    <p class="card-text d-none"><%= post.subtitle %></p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div> 
+                         <% }); %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container-fluid text-center">
+                        <a target="_blank" href="/sendWhatsapp/Quero receber conteúdos no meu WhatsApp!"><img class="img-fluid" src="../assets/promotions/wpp.png"></a>
+                      </div>
+                      <div class="col-md-12 p-3 text-center">  
+                        <div class="container-fluid text-center"><h4 class="font-menu text-red">Curta nossa página no Facebook</h4></div> 
+                        <div class="fb-page" data-href="https://www.facebook.com/teste/" 
+                        data-tabs="timeline" data-height="800" data-small-header="false" data-adapt-container-width="true" 
+                        data-hide-cover="false" data-show-facepile="false">
+                        <blockquote cite="https://www.facebook.com/teste/" 
+                          class="fb-xfbml-parse-ignore">
+                          <a href="https://www.facebook.com/teste/"></a>
+                        </blockquote>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="d-none" id="hiddendt"><%= post.createdAt %></div>
+
+    <footer>
+        <% include partials/footer %>
+    </footer>
+
+    <script>
+        var elements = document.querySelectorAll('#content p img')
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+            elements[i].style.width = null;
+            elements[i].style.height = null;
+        }
+
+        var data = new Date(document.getElementById("hiddendt").innerHTML);
+        data = new Date(data);
+
+        //var day = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"][data.getDay()];
+        var date = data.getDate();
+        var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
+        var year = data.getFullYear();
+
+        document.getElementById("dateandtime").innerHTML = date + ' de ' + month + ' de ' + year;
+    </script>
+
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/popper.min.js"></script>
+    <script src="../assets/bootstrap.min.js"></script>
+    <script src="../assets/pgwslider.js"></script>
+    <script src="../assets/index.js"></script>
+    <script src="../assets/jquery.mask.min.js"></script>
+    <script src="../assets/modal.js"></script>
+  </body>
+</html>
